@@ -16,37 +16,17 @@ computer_choice = ""
 
 def choice_to_number(choice):
     """Convert choice to number."""
-
-    # TODO: Implement
-    # NOTE
-    # A dictionary-based solution (see Clever Programmer tutorial and assignment README) will be preferred.
-    # Evaluation will be as follows:
-    # 1. Dictionary-based solution: 100%
-    # 2. Chain-of-if-statements solution: 80%
-
-    raise NotImplementedError
+    return {'rock' :0, 'paper' :1, 'scissors' :2, 'spock' :3, 'lizard' :4}[choice]
 
 
 def number_to_choice(number):
     """Convert number to choice."""
-
-    # TODO: Implement
-    # NOTE
-    # A dictionary-based solution (see Clever Programmer tutorial and assignment README) will be preferred.
-    # Evaluation will be as follows:
-    # 1. Dictionary-based solution: 100%
-    # 2. Chain-of-if-statements solution: 80%
-
-    raise NotImplementedError
+    return {0: 'rock', 1: 'paper', 2: 'scissors', 3: 'spock', 4: 'lizard'}[number]
 
 
 def random_computer_choice():
     """Choose randomly for computer."""
-
-    # TODO: Implement (Hint: Look up random.choice())
-
-    raise NotImplementedError
-
+    return random.choice(['rock','paper','scissors', 'spock', 'lizard'])
 
 def choice_result(human_move, computer_move):
     """Return the result of who wins.
@@ -60,18 +40,18 @@ def choice_result(human_move, computer_move):
     global COMPUTER_SCORE
     global HUMAN_SCORE
 
-    # TODO: Implement
-    # Based on the given human_choice and computer_choice,
-    # determine who won and increment their score by 1.
-    # In case of tie, don't increment anyone's score.
+    human_choice_number = choice_to_number(human_choice)
+    computer_choice_number = choice_to_number(computer_choice)
 
-    # NOTE
-    # A modulo-based solution (see Clever Programmer tutorial and assignment README) will be preferred.
-    # Evaluation will be as follows:
-    # 1. Modulo-based solution: 100%
-    # 2. Chain-of-if-statements solution: 80%
+    if human_choice == computer_choice:
+        print("Tie")
+    elif(human_choice_number - computer_choice_number) % 5 in [1,3]:
+        print("Human wins!")
+        HUMAN_SCORE += 1
+    else:
+        print("Computer win!")
+        COMPUTER_SCORE += 1
 
-    raise NotImplementedError
 
 
 # DO NOT REMOVE THESE TEST FUNCTIONS.
