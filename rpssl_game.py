@@ -40,10 +40,10 @@ def choice_result(human_move, computer_move):
     global COMPUTER_SCORE
     global HUMAN_SCORE
 
-    human_choice_number = choice_to_number(human_choice)
-    computer_choice_number = choice_to_number(computer_choice)
+    human_choice_number = choice_to_number(human_move)
+    computer_choice_number = choice_to_number(computer_move)
 
-    if human_choice == computer_choice:
+    if human_move == computer_move:
         print("Tie")
     elif(human_choice_number - computer_choice_number) % 5 in [1,3]:
         print("Human wins!")
@@ -157,6 +157,7 @@ def get_user_input():
 
 def play_rps():
     global HUMAN_SCORE, COMPUTER_SCORE
+    global human_choice, computer_choice
 
     moves = {'r': rock,
              'p': paper,
@@ -174,12 +175,13 @@ def play_rps():
             move = moves.get(user_input)
             assert move is not None
             move()
+            print('You picked {}, computer picked {}'.format(human_choice, computer_choice))
             print('Score: Human {} : Computer {}'.format(HUMAN_SCORE, COMPUTER_SCORE))
 
 
 # main function
 if __name__ == '__main__':
     # Uncomment to test your functions.
-    # test_all()
+    test_all()
 
     play_rps()
